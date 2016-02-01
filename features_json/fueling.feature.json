@@ -1,0 +1,51 @@
+  "scenarios": [
+    {
+      "scenario": {
+        "title": "Car magicly multiplies fuel when fueling",
+          "testColumnTitles": [
+            {
+              "title": "gallons"
+            },
+            {
+              "title": "expected"
+            }
+          ],
+          "testRows": [
+            {
+              "position": "1",
+              "testRowData": [
+                {
+                  "testRowCell": "3"
+                },
+                {
+                  "testRowCell": "15"
+                }
+              ]
+            },
+            {
+              "position": "2",
+              "testRowData": [
+                {
+                  "testRowCell": "5"
+                },
+                {
+                  "testRowCell": "25"
+                }
+              ]
+            },
+            {
+              "position": "3",
+              "testRowData": [
+                {
+                  "testRowCell": "10"
+                },
+                {
+                  "testRowCell": "50"
+                }
+              ]
+            }
+          ]
+        }
+    }
+  ]
+}
