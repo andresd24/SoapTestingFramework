@@ -8,9 +8,9 @@ Feature: Fueling
 
     Examples: 
       | gallons | expected | 
-      | 3       | 15       |
-      | 5       | 25       |
-      | 10      | 50       |
+ #     | 3       | 15       |
+ #     | 5       | 25       |
+      | 10      | 51       |
 
       
 #Scenario Outline: Car calculates correct miles per gallon

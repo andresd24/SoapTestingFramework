@@ -17,7 +17,7 @@ public class FuelingSteps {
 	@Given("The customer empties the the car's fuel levels")
 	public void connectToCarService() {
 		try {
-	        ProcessBuilder pb = new ProcessBuilder("curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
+	        ProcessBuilder pb = new ProcessBuilder("C:\\Users\\ominatti\\Documents\\desarrollo\\curl-7.47.0-win64-mingw\\bin\\curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
 	        		"@soap_files/emptyFuel.xml", "http://localhost:8090/car");
 	        Process p = pb.start(); 
 	        p.waitFor(); 
@@ -29,7 +29,7 @@ public class FuelingSteps {
 	@When("^the customer fuels the following number of gallons (\\d+) to his or her car$")
 	public void fuelCar(final int gallons) throws IOException {
 		try {
-	        ProcessBuilder pb = new ProcessBuilder("curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
+	        ProcessBuilder pb = new ProcessBuilder("C:\\Users\\ominatti\\Documents\\desarrollo\\curl-7.47.0-win64-mingw\\bin\\curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
 	          		String.format("@soap_files/test_cases/addFuel_%1$d.xml", gallons), "http://localhost:8090/car");
 	        Process p = pb.start(); 
 	        p.waitFor(); 
@@ -42,7 +42,7 @@ public class FuelingSteps {
 	public void verifyAmountOfGalons(final int expectedGallons) {
 		try {
 			
-			Process p = new ProcessBuilder("curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
+			Process p = new ProcessBuilder("C:\\Users\\ominatti\\Documents\\desarrollo\\curl-7.47.0-win64-mingw\\bin\\curl.exe", "--header", "Content-Type: text/xml;charset=UTF-8", "--data",
 	        		"@soap_files/getFuelLevel.xml", "http://localhost:8090/car").start();
 			p.waitFor();
  
