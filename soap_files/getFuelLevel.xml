@@ -1,0 +1,6 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exam="http://example.se.java.main.src.product/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <exam:getFuelLevel/>
+   </soapenv:Body>
+</soapenv:Envelope>
