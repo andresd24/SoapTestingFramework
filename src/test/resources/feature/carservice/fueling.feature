@@ -8,15 +8,20 @@ Feature: Fueling
 
     Examples: 
       | gallons | expected | 
- #     | 3       | 15       |
- #     | 5       | 25       |
+      | 3       | 15       |
+      | 5       | 25       |
       | 10      | 51       |
 
       
-#Scenario Outline: Car calculates correct miles per gallon
-#    Given the customer fuels the following number of gallons <gallons> to his or her car
-#    When the car model is <carmodel>
-#    Then the car is has the following <expectedMilage> expected miles per galon
+Scenario Outline: Car calculates correct trip per gallon
+    Given The customer empties the the car's fuel levels
+    When the customer owns a car of brand <carBrand> and make <carMake>
+    And the customer fuels the following number of gallons <gallons> to his or her car
+	And the gas type is <gastype>
+    Then the car is has the following <expectedMilage> expected miles to travel
 
-    #autodatagen#
-     
+	Examples:
+	| carBrand |  carMake  | gallons |  gastype | expectedMiles  |
+    | VW 	   |  Passat   |   10    |    98    |    164         |
+    | 5        |  25       |	
+    | 10       |  51       |     
