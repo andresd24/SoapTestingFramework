@@ -60,5 +60,12 @@ public class FuelingSteps {
 	        e.printStackTrace();
 	    }
 	}
+	
+	@When("When the car model is (\\s+)$")
+	public void setCarModel(String carModel)
+	{
+		
+		
+	}
 
 }
