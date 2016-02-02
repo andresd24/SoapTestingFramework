@@ -10,7 +10,7 @@ Feature: Fueling
       | gallons | expected | 
       | 3       | 15       |
       | 5       | 25       |
-      | 10      | 51       |
+      | 10      | 50       |
 
       
 #Scenario Outline: Car calculates correct trip per gallon
@@ -22,6 +22,5 @@ Feature: Fueling
 
 	#Examples:
 #	| carBrand |  carMake  | gallons |  gastype | expectedMiles  |
-#  | VW 	   |  Passat   |   10    |    98    |    164         |
-#  | 5        |  25       |	
- #  | 10       |  51       |     
+#   | VW 	   |  Passat   |   10    |    98    |    164         |
+#   etc...
