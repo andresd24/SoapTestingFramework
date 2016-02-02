@@ -1,7 +1,7 @@
   "scenarios": [
     {
       "scenario": {
-        "title": "Car magicly multiplies fuel when fueling",
+        "title": "Car magically multiplies fuel when fueling",
           "testColumnTitles": [
             {
               "title": "gallons"
@@ -46,6 +46,48 @@
             }
           ]
         }
-    }
+    },
+	"scenario": {
+        "title": "Car calculates correct trip after fueling when tank is empty",
+          "testColumnTitles": [
+            {
+              "title": "Brand"
+            },
+            {
+              "title": "CarModel"
+            },
+            {
+              "title": "Gallons"
+            },
+            {
+              "title": "GasType"
+            },
+            {
+              "title": "ExpectedMiles"
+            }
+          ],
+          "testRows": [
+            {
+              "position": "1",
+              "testRowData": [
+                {
+                  "testRowCell": "VW"
+                },
+                {
+                  "testRowCell": "Passat"
+                },
+                {
+                  "testRowCell": "11"
+                },
+                {
+                  "testRowCell": "98"
+                },
+                {
+                  "testRowCell": "180.4"
+                }
+              ]
+            }
+		  ]        
+    	}
   ]
 }

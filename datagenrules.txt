@@ -1,0 +1,15 @@
+
+
+Car calculates correct trip after fueling when tank is empty:
+
+SQL INSERT ()
+Brand	CarModel			GasType		MilagePerGallon   
+VW		Passat				98				16.4
+VW		Passat				95				18.3
+VW		Golf				95				21.1
+BMW		9238478#!%&%!		90			 4429496730
+
+
+ExampleTableColumns { Brand, CarModel, Gallons, GasType, ExpectedMiles}
+BusinessRule: { ExpectedMiles = Brand.CarModel.GasType.[MilesPerGalon] * <Gallons> }
+
