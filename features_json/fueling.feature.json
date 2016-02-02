@@ -1,93 +1,44 @@
-  "scenarios": [
-    {
-      "scenario": {
-        "title": "Car magically multiplies fuel when fueling",
-          "testColumnTitles": [
-            {
-              "title": "gallons"
-            },
-            {
-              "title": "expected"
-            }
-          ],
-          "testRows": [
-            {
-              "position": "1",
-              "testRowData": [
-                {
-                  "testRowCell": "3"
-                },
-                {
-                  "testRowCell": "15"
-                }
-              ]
-            },
-            {
-              "position": "2",
-              "testRowData": [
-                {
-                  "testRowCell": "5"
-                },
-                {
-                  "testRowCell": "25"
-                }
-              ]
-            },
-            {
-              "position": "3",
-              "testRowData": [
-                {
-                  "testRowCell": "10"
-                },
-                {
-                  "testRowCell": "50"
-                }
-              ]
-            }
-          ]
-        }
-    },
-	"scenario": {
-        "title": "Car calculates correct trip after fueling when tank is empty",
-          "testColumnTitles": [
-            {
-              "title": "Brand"
-            },
-            {
-              "title": "CarModel"
-            },
-            {
-              "title": "Gallons"
-            },
-            {
-              "title": "GasType"
-            },
-            {
-              "title": "ExpectedMiles"
-            }
-          ],
-          "testRows": [
-            {
-              "position": "1",
-              "testRowData": [
-                {
-                  "testRowCell": "VW"
-                },
-                {
-                  "testRowCell": "Passat"
-                },
-                {
-                  "testRowCell": "11"
-                },
-                {
-                  "testRowCell": "98"
-                },
-                {
-                  "testRowCell": "180.4"
-                }
-              ]
-            }
-		  ]        
-    	}
-  ]
-}
+[  
+    {  
+        "title":"Car magically multiplies fuel when fueling",
+        "testColumnTitles":[  
+            "gallons",
+            "expected"
+        ],
+        "testRows":[ 
+        	{
+        		"position" : "1"
+        		"testRow": [
+        			{
+        			  "testRowCell": "3"
+                	},
+               		{
+	                  "testRowCell": "15"
+        	        }
+        	    ]
+        	},
+        	{
+        		"position" : "2"
+        		"testRow": [
+        			{
+        			  "testRowCell": "5"
+                	},
+               		{
+	                  "testRowCell": "25"
+        	        }
+        	    ]
+        	},
+        	{
+        		"position" : "3"
+        		"testRow": [
+        			{
+        			  "testRowCell": "10"
+                	},
+               		{
+	                  "testRowCell": "50"
+        	        }
+        	    ]
+        	}
+        ],
+    }
+]

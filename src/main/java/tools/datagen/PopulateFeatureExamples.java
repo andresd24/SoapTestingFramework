@@ -1,5 +1,9 @@
 package tools.datagen;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,12 +27,48 @@ public class PopulateFeatureExamples {
 	
 	
     // Insert logic for processing found files here.
-    private static void ProcessExample(BufferedWriter processedFeatureFileTempBufferedWriter, String data, String scenarioTitle) throws FileNotFoundException, IOException
+
+	private static void ProcessExample(BufferedWriter processedFeatureFileTempBufferedWriter, JSONArray jsonArray, String scenarioTitle) throws FileNotFoundException, IOException
     {
-    	processedFeatureFileTempBufferedWriter.write("\t anything" + data);
+		processedFeatureFileTempBufferedWriter.write("\t Examples:");
+        processedFeatureFileTempBufferedWriter.newLine();
+
+		for (Object o : jsonArray)
+    	{
+		   JSONObject scenario = (JSONObject) o;
+		   JSONArray testColumnTitles = (JSONArray) scenario.get("testColumnTitles");
+		   
+		   for (Object colTitle : testColumnTitles)
+		   {
+               processedFeatureFileTempBufferedWriter.write(" | ");
+               processedFeatureFileTempBufferedWriter.write(colTitle.toString());
+		   }
+           processedFeatureFileTempBufferedWriter.write(" | ");
+           processedFeatureFileTempBufferedWriter.newLine();
+           
+           JSONArray testRows = (JSONArray) scenario.get("testRows");
+           for (Object row : testRows)
+		   {
+    		   JSONObject currentRow = (JSONObject) row;
+               JSONArray testCells = (JSONArray) currentRow.get("testRow");
+		   
+               for (Object cell : testCells)
+    		   {
+            	   JSONObject currentCell = (JSONObject) cell;
+            	   String cellValue = (String) currentCell.get("testRowCell");
+            	   
+                   processedFeatureFileTempBufferedWriter.write(" | ");
+                   processedFeatureFileTempBufferedWriter.write(cellValue);
+    		   }
+               processedFeatureFileTempBufferedWriter.write(" | ");
+               processedFeatureFileTempBufferedWriter.newLine();
+
+		   }
+    	}
+        processedFeatureFileTempBufferedWriter.newLine();
     	
     }
-	
+
     // Insert logic for processing found files here.
     private static void ProcessFile(String path) throws FileNotFoundException, IOException
     {
@@ -71,10 +111,21 @@ public class PopulateFeatureExamples {
             }
             else
             {
-            	String jsonText = new String(Files.readAllBytes(Paths.get(String.format("features_json/%1$s.json", featureFileName))), StandardCharsets.UTF_8);
-            	 
-            	ProcessExample(processedFeatureFileTempBufferedWriter, jsonText, scenarioTitle);
-                scenarioTitle = "";
+            	
+            	try 
+            	{
+	            	JSONParser parser = new JSONParser();
+	            	JSONArray exampleTableArray = (JSONArray) parser.parse(new FileReader(String.format("features_json/%1$s.json", featureFileName)));
+	            	ProcessExample(processedFeatureFileTempBufferedWriter, exampleTableArray, scenarioTitle);
+            	}
+            	catch (ParseException p)
+            	{
+            		System.out.println(p);
+            	}
+            	
+            	//String jsonText = new String(Files.readAllBytes(Paths.get(String.format("features_json/%1$s.json", featureFileName))), StandardCharsets.UTF_8);
+           	 	//ProcessExample(processedFeatureFileTempBufferedWriter, jsonText, scenarioTitle);
+            	scenarioTitle = "";
             }
         }
         
@@ -92,7 +143,7 @@ public class PopulateFeatureExamples {
         Files.delete(processedFeatureFileTemp.toPath());
     }
 
-    public static void ProcessDirectory(final File folder) throws IOException {
+    public static void ProcessDirectory(final File folder) throws IOException, ParseException {
             for (final File fileEntry : folder.listFiles()) {
                 if (fileEntry.isDirectory()) {
                 	ProcessDirectory(fileEntry);
@@ -113,7 +164,7 @@ public class PopulateFeatureExamples {
     }
         
         
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args) throws IOException, ParseException
     {
         String feature_files_location = "src/test/resources/feature/fueling/";
 
