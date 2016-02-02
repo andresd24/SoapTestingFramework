@@ -6,8 +6,8 @@ Feature: Fueling
     When the customer fuels the following number of gallons <gallons> to his or her car
     Then the car is left with the expected <expected> gallons
 
-	#autodatagen#
-      
+	 #autodatagen#
+
 #Scenario Outline: Car calculates correct trip per gallon
 #    Given The customer empties the the car's fuel levels
 #    When the customer owns a car of brand <carBrand> and make <carMake>

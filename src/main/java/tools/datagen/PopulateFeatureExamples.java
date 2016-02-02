@@ -135,6 +135,16 @@ public class PopulateFeatureExamples {
         Files.delete(originalFeatureFile.toPath());
         Files.copy(processedFeatureFileTemp.toPath(), originalFeatureFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         Files.delete(processedFeatureFileTemp.toPath());
+        
+        try 
+        {
+			Process p = new ProcessBuilder("ext/mvn.cmd", "test").start();
+			p.waitFor();
+        }
+        catch (Exception e)
+        {
+        	System.out.println(e.toString());        	
+        }
     }
 
     public static void ProcessDirectory(final File folder) throws IOException, ParseException {
