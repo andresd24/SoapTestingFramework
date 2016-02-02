@@ -7,20 +7,16 @@ import org.json.simple.parser.ParseException;
 
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
-import java.io.FilterReader;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.nio.file.Paths;
-import java.nio.charset.StandardCharsets;
 
 public class PopulateFeatureExamples {
 
@@ -123,8 +119,6 @@ public class PopulateFeatureExamples {
             		System.out.println(p);
             	}
             	
-            	//String jsonText = new String(Files.readAllBytes(Paths.get(String.format("features_json/%1$s.json", featureFileName))), StandardCharsets.UTF_8);
-           	 	//ProcessExample(processedFeatureFileTempBufferedWriter, jsonText, scenarioTitle);
             	scenarioTitle = "";
             }
         }
