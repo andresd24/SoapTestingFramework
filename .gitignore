@@ -1,1 +1,17 @@
-/bin/
+/.idea
+*.iml
+/target/
+/*.db
+*.log
+#Mac OS
+.DS_Store
+
+#Eclipse project files
+.project
+.classpath
+.settings/
+target-eclipse/
+target/
+
+#AngularJS class path
+.tern-project
