@@ -35,8 +35,8 @@
             "carBrand",
             "carMake",
             "gallons",
-            "gasType",
-            "expected"
+            "fuelType",
+            "expectedMiles"
         ],
         "testRows":[ 
         	{
@@ -54,8 +54,8 @@
         		"testRow": [
         			{ "testRowCell": "VW"},
                		{ "testRowCell": "Passat"},
-        			{ "testRowCell": "95"},
         			{ "testRowCell": "11"},
+        			{ "testRowCell": "95"},
                		{ "testRowCell": "201.3" }
         	    ]
         	}

@@ -17,9 +17,9 @@ import java.io.BufferedReader;
 
 public class FuelingSteps {
 	
-	private String m_carModel = "";
-	private int m_gallons = 0;
-	private double m_conversionRate = 0.0;
+	private static String m_carModel = "";
+	private static int m_gallons = 0;
+	private static double m_conversionRate = 0.0;
 	
 	@Given("The customer empties the the car's fuel levels")
 	public void connectToCarService() {
@@ -84,7 +84,7 @@ public class FuelingSteps {
 		}
 	}
 	
-	@And("^the customer fuels the following number of gallons (\\d+) to his or her car of fule (\\d+) type$")
+	@And("^the customer fuels the following number of gallons (\\d+) to his or her car of fuel type (\\d+)$")
 	public void fuelCarWithGallonsOfSpecificFuel(final int gallons, final int fuelType)
 	{
 		System.out.println(Integer.toString(gallons) + " " + Integer.toString(fuelType));
@@ -120,7 +120,7 @@ public class FuelingSteps {
 		
 	}
 
-	@Then("^the car is has the following (\\s+) expected miles to travel$")
+	@Then("^the car is has the following \'([^\"]*)\' expected miles to travel$")
 	public void verifyTheExpectedTripDistanceInMiles(final String expectedTripMiles)
 	{
 		double expectedMiles = Double.parseDouble(expectedTripMiles);
