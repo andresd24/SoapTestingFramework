@@ -6,8 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.StoredProcedureQuery;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ import com.google.common.collect.Lists;
 @Transactional
 public class CarServiceImpl implements CarService {
 
-	private Log log = LogFactory.getLog(CarServiceImpl.class);
+	private static final Logger logger = Logger.getLogger(CarServiceImpl.class);
 	
 	@PersistenceContext
 	private EntityManager em;
@@ -33,8 +32,9 @@ public class CarServiceImpl implements CarService {
 	
 	@Override
 	public boolean executeStoredProcedure(){
-		log.info("Starting the call to the store procedure ...");
+		logger.info("Starting the call to the store procedure ...");
 		StoredProcedureQuery query = em.createStoredProcedureQuery("car_initial_data");
+		logger.info("Finished the call to the stored procedure ...");
 		return query.execute();
 	}
 

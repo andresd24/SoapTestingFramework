@@ -7,24 +7,30 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
 import com.company.model.Car;
 
 public class JsonUtil {
 
-	public void createAndSaveJson (List<Car> cars, String fileName){
+	private static final Logger logger = Logger.getLogger(JsonUtil.class);
+
+	public void createAndSaveJson(List<Car> cars, String fileName) {
 		JSONObject obj = createJson(cars);
 		saveJson(obj, fileName);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public JSONObject createJson(List<Car> cars) {
+		logger.info("Starting json creation ...");
+
 		List<Scenario.Row> rows = new ArrayList<>();
 		JSONObject jsonObject = new JSONObject();
 
 		jsonObject.put("title", "Car calculates correct trip per gallon");
-		jsonObject.put("testColumnTitles", Arrays.asList("carBrand", "carMake", "gallons", "fuelType", "expectedMiles"));
+		jsonObject.put("testColumnTitles",
+				Arrays.asList("carBrand", "carMake", "gallons", "fuelType", "expectedMiles"));
 
 		for (Car car : cars) {
 			Scenario.Row row = new Scenario.Row();
@@ -46,18 +52,20 @@ public class JsonUtil {
 		}
 		jsonObject.put("testRows", rows);
 
+		logger.info("Finished json creation ...");
 		return jsonObject;
 	}
-	
+
 	public void saveJson(JSONObject obj, String fileName) {
+		logger.info("Starting to save json file ...");
 		try {
-			FileWriter file = new FileWriter(".//features_json//" + fileName); 
+			FileWriter file = new FileWriter(".//features_json//" + fileName);
 			file.write(obj.toJSONString());
 			file.flush();
 			file.close();
-
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		logger.info("Finished of saving json file ...");
 	}
 }
