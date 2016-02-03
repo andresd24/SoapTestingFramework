@@ -78,11 +78,11 @@ public class Scenario {
 		public String parseData () {
 			StringBuilder sb = new StringBuilder();
 			
-			sb.append("{ position : " + getPosition() + ",");
-			sb.append("testRow: [");
+			sb.append("{ \"position\": " + getPosition() + ",");
+			sb.append("\"testRow\": [");
 			for(String value : getRowData()){
 				sb.append("{");
-				sb.append("testRowCell:\"");
+				sb.append("\"testRowCell\":\"");
 				sb.append(value);
 				sb.append("\"},");
 			}
