@@ -9,36 +9,56 @@
         	{
         		"position" : "1"
         		"testRow": [
-        			{
-        			  "testRowCell": "3"
-                	},
-               		{
-	                  "testRowCell": "15"
-        	        }
+        			{"testRowCell": "3"},
+               		{"testRowCell": "15"}
         	    ]
         	},
         	{
         		"position" : "2"
         		"testRow": [
-        			{
-        			  "testRowCell": "5"
-                	},
-               		{
-	                  "testRowCell": "25"
-        	        }
+        			{"testRowCell": "5"},
+               		{"testRowCell": "25"}
         	    ]
         	},
         	{
         		"position" : "3"
         		"testRow": [
-        			{
-        			  "testRowCell": "10"
-                	},
-               		{
-	                  "testRowCell": "50"
-        	        }
+        			{"testRowCell": "10"},
+               		{"testRowCell": "50"}
         	    ]
         	}
         ],
+    },
+	{  
+        "title": "Car calculates correct trip per gallon",
+        "testColumnTitles":[  
+            "carBrand",
+            "carMake",
+            "gallons",
+            "gasType",
+            "expected"
+        ],
+        "testRows":[ 
+        	{
+        		"position" : "1"
+        		"testRow": [
+        			{ "testRowCell": "VW"},
+               		{ "testRowCell": "Passat"},
+        			{ "testRowCell": "10"},
+        			{ "testRowCell": "98"},
+        			{ "testRowCell": "164"}
+        	    ]
+        	},
+        	{
+        		"position" : "2"
+        		"testRow": [
+        			{ "testRowCell": "VW"},
+               		{ "testRowCell": "Passat"},
+        			{ "testRowCell": "95"},
+        			{ "testRowCell": "11"},
+               		{ "testRowCell": "201.3" }
+        	    ]
+        	}
+        ]
     }
 ]

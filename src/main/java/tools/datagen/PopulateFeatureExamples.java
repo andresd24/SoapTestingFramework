@@ -1,5 +1,6 @@
 package tools.datagen;
 
+
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -22,9 +23,7 @@ public class PopulateFeatureExamples {
 
 	
 	
-    // Insert logic for processing found files here.
-
-	private static void ProcessExample(BufferedWriter processedFeatureFileTempBufferedWriter, JSONArray jsonArray, String scenarioTitle) throws FileNotFoundException, IOException
+	private static void ProcessExample(BufferedWriter processedFeatureFileTempBufferedWriter, JSONArray jsonArray, String inScenarioTitle) throws FileNotFoundException, IOException
     {
 		processedFeatureFileTempBufferedWriter.write("\t Examples:");
         processedFeatureFileTempBufferedWriter.newLine();
@@ -32,37 +31,41 @@ public class PopulateFeatureExamples {
 		for (Object o : jsonArray)
     	{
 		   JSONObject scenario = (JSONObject) o;
-		   JSONArray testColumnTitles = (JSONArray) scenario.get("testColumnTitles");
+		   String scenarioTitle = (String) scenario.get("title");
 		   
-		   for (Object colTitle : testColumnTitles)
+		   if (scenarioTitle.toLowerCase().equals(inScenarioTitle.toLowerCase()))
 		   {
-               processedFeatureFileTempBufferedWriter.write(" | ");
-               processedFeatureFileTempBufferedWriter.write(colTitle.toString());
-		   }
-           processedFeatureFileTempBufferedWriter.write(" | ");
-           processedFeatureFileTempBufferedWriter.newLine();
-           
-           JSONArray testRows = (JSONArray) scenario.get("testRows");
-           for (Object row : testRows)
-		   {
-    		   JSONObject currentRow = (JSONObject) row;
-               JSONArray testCells = (JSONArray) currentRow.get("testRow");
-		   
-               for (Object cell : testCells)
-    		   {
-            	   JSONObject currentCell = (JSONObject) cell;
-            	   String cellValue = (String) currentCell.get("testRowCell");
-            	   
-                   processedFeatureFileTempBufferedWriter.write(" | ");
-                   processedFeatureFileTempBufferedWriter.write(cellValue);
-    		   }
-               processedFeatureFileTempBufferedWriter.write(" | ");
-               processedFeatureFileTempBufferedWriter.newLine();
-
-		   }
-    	}
-        processedFeatureFileTempBufferedWriter.newLine();
-    	
+			   JSONArray testColumnTitles = (JSONArray) scenario.get("testColumnTitles");
+			   
+			   for (Object colTitle : testColumnTitles)
+			   {
+	               processedFeatureFileTempBufferedWriter.write(" | ");
+	               processedFeatureFileTempBufferedWriter.write(colTitle.toString());
+			   }
+	           processedFeatureFileTempBufferedWriter.write(" | ");
+	           processedFeatureFileTempBufferedWriter.newLine();
+	           
+	           JSONArray testRows = (JSONArray) scenario.get("testRows");
+	           for (Object row : testRows)
+			   {
+	    		   JSONObject currentRow = (JSONObject) row;
+	               JSONArray testCells = (JSONArray) currentRow.get("testRow");
+			   
+	               for (Object cell : testCells)
+	    		   {
+	            	   JSONObject currentCell = (JSONObject) cell;
+	            	   String cellValue = (String) currentCell.get("testRowCell");
+	            	   
+	                   processedFeatureFileTempBufferedWriter.write(" | ");
+	                   processedFeatureFileTempBufferedWriter.write(cellValue);
+	    		   }
+	               processedFeatureFileTempBufferedWriter.write(" | ");
+	               processedFeatureFileTempBufferedWriter.newLine();
+	
+			   }
+	    	}
+	        processedFeatureFileTempBufferedWriter.newLine();
+    	}     
     }
 
     // Insert logic for processing found files here.
@@ -96,7 +99,7 @@ public class PopulateFeatureExamples {
         while ((line = originalFileInputBufferedReader.readLine()) != null)
         {
         	System.out.println(line);
-            if (!line.contains("#autodatagen#")) {
+            if (!line.contains("[autodatagen]")) {
             	
                 if (line.contains("Scenario Outline: ")) {
                     int position = ("Scenario Outline: ").length() + 1;
@@ -135,6 +138,7 @@ public class PopulateFeatureExamples {
         Files.delete(originalFeatureFile.toPath());
         Files.copy(processedFeatureFileTemp.toPath(), originalFeatureFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
         Files.delete(processedFeatureFileTemp.toPath());
+        
         
         try 
         {
