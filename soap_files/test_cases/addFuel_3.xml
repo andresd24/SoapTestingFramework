@@ -1,8 +1,0 @@
-<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:exam="http://example.se.java.main.src.product/">
-   <soapenv:Header/>
-   <soapenv:Body>
-      <exam:addFuel>
-         <arg0>3</arg0>
-      </exam:addFuel>
-   </soapenv:Body>
-</soapenv:Envelope>
